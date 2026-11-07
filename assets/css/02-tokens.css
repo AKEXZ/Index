@@ -1,0 +1,191 @@
+/* ============================================================
+   02-tokens.css — 设计变量（暗/亮主题）、全局基础样式、背景与自定义光标
+
+   配色依据：favicon.svg（AKE 像素字标）
+     主强调 Pink  #FF3366  ← A 字
+     次强调 Blue  #0052FF  ← K 字
+     第三色 Green #23AC38  ← Ǝ 字
+     描边墨黑 #222222 / 外发光白 #FFFFFF
+   所有强调色在对应底色上的对比度均 ≥ 4.5:1（WCAG AA 正文标准），
+   见文末注释中的实测数值。
+   ============================================================ */
+
+/* ---------- 基础变量（暗色主题，默认） ---------- */
+:root {
+    /* 中性底 / 文字 */
+    --ink: #08090a;               /* 页面底色（与卡片瞳孔 fill 保持一致） */
+    --panel: #0b0e16;             /* 冷调蓝黑面板 */
+    --paper: #f2f0ea;             /* 主文字 */
+    --dim: #98a0ae;               /* 次要文字（偏蓝灰） */
+    --desc: #a9b0bc;              /* 描述文字 */
+
+    /* 强调色 —— 取自 favicon */
+    --pink: #ff3366;              /* A：主强调，暗底对比 5.62:1 */
+    --pink-soft: #ff85a6;         /* 柔和粉，暗底 8.69:1 */
+    --blue: #4d84ff;              /* K：次强调（提亮版，暗底 5.75:1） */
+    --blue-deep: #0052ff;         /* K 原色，仅用于底纹 / 装饰块 */
+    --blue-soft: #7ea8ff;         /* 柔和蓝，暗底 8.48:1 */
+    --green: #23ac38;             /* Ǝ：第三色（原值，暗底 6.67:1） */
+    --green-soft: #5ed072;        /* 柔和绿，暗底 10.19:1 */
+    --on-accent: #08090a;         /* 强调色块上的文字（黑，粉上 5.62:1） */
+
+    /* 线条 / 阴影 / 网格（冷白基色 238,242,252） */
+    --line: rgba(238, 242, 252, 0.28);
+    --card-line: rgba(238, 242, 252, 0.42);
+    --idx: rgba(238, 242, 252, 0.42);
+    --dash: rgba(238, 242, 252, 0.12);
+    --stroke: rgba(238, 242, 252, 0.16);
+    --grid: rgba(238, 242, 252, 0.07);
+    --shadow-block: 6px 6px 0 rgba(238, 242, 252, 0.16);
+    --shadow-block-sm: 3px 3px 0 rgba(238, 242, 252, 0.14);
+    --title-shadow: 7px 7px 0 rgba(238, 242, 252, 0.13);
+
+    /* 字体 */
+    --font-cn: "Zpix", "PingFang SC", "Microsoft YaHei", sans-serif;
+    --font-en: "Press Start 2P", "IBM Plex Mono", monospace;
+    --font-body: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+
+    --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+    --pad: clamp(20px, 4vw, 64px);
+}
+
+/* ---------- 白天模式 ---------- */
+html[data-theme="light"] {
+    --ink: #f5f3ea;               /* 纸白 */
+    --panel: #fffdf6;
+    --paper: #101423;             /* 冷墨蓝 */
+    --dim: #5a6272;
+    --desc: #4d5464;
+
+    --pink: #d0174b;              /* 纸底 4.84:1 */
+    --pink-soft: #a81040;         /* 6.72:1 */
+    --blue: #0b3fd0;              /* 7.17:1 */
+    --blue-deep: #0033b5;
+    --blue-soft: #1233a8;         /* 9.15:1 */
+    --green: #0f7a25;             /* 4.93:1 */
+    --green-soft: #0d6b22;        /* 6.01:1 */
+    --on-accent: #fdfbf3;         /* 强调色块上的文字（白，深底上 ≥5.19:1） */
+
+    --line: rgba(16, 20, 35, 0.28);
+    --card-line: rgba(16, 20, 35, 0.52);
+    --idx: rgba(16, 20, 35, 0.5);
+    --dash: rgba(16, 20, 35, 0.16);
+    --stroke: rgba(16, 20, 35, 0.18);
+    --grid: rgba(16, 20, 35, 0.07);
+    --shadow-block: 6px 6px 0 rgba(16, 20, 35, 0.55);
+    --shadow-block-sm: 3px 3px 0 rgba(16, 20, 35, 0.45);
+    --title-shadow: 6px 6px 0 rgba(16, 20, 35, 0.18);
+}
+
+/* ---------- 全局基础 ---------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #343a4a transparent;
+}
+
+html[data-theme="light"] {
+    scrollbar-color: #b9bcc6 transparent;
+}
+
+body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    cursor: none;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 背景：纯色 + 稀疏像素网格 */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(to right, var(--grid) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(110% 85% at 50% 30%, #000 20%, transparent 90%);
+    mask-image: radial-gradient(110% 85% at 50% 30%, #000 20%, transparent 90%);
+}
+
+/* 8-bit 抖动角 */
+.dither {
+    position: fixed;
+    z-index: 0;
+    width: min(58vw, 720px);
+    height: min(58vw, 720px);
+    pointer-events: none;
+    background-image:
+        linear-gradient(45deg, var(--dither-c) 25%, transparent 25%, transparent 75%, var(--dither-c) 75%),
+        linear-gradient(45deg, var(--dither-c) 25%, transparent 25%, transparent 75%, var(--dither-c) 75%);
+    background-size: 6px 6px;
+    background-position: 0 0, 3px 3px;
+    opacity: 0.65;
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 0%, rgba(0, 0, 0, 0.5) 42%, transparent 68%);
+    mask-image: radial-gradient(circle at 50% 50%, #000 0%, rgba(0, 0, 0, 0.5) 42%, transparent 68%);
+}
+
+/* 粉色抖动（取自 favicon A 字），随主题色自动适配 */
+.dither--pink {
+    --dither-c: color-mix(in srgb, var(--pink) 32%, transparent);
+    top: -24%;
+    right: -14%;
+}
+
+/* 蓝色抖动（取自 favicon K 字原色） */
+.dither--blue {
+    --dither-c: color-mix(in srgb, var(--blue-deep) 34%, transparent);
+    bottom: -26%;
+    left: -16%;
+}
+
+/* 自定义光标 */
+.cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--pink);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.35);
+    z-index: 120;
+    pointer-events: none;
+    transform: translate3d(-50%, -50%, 0);
+    transition: width 0.2s steps(2), height 0.2s steps(2), background 0.2s steps(2), opacity 0.2s;
+}
+
+.cursor.is-hot {
+    width: 16px;
+    height: 16px;
+    background: transparent;
+    opacity: 1;
+}
+
+@media (hover: none) {
+    body { cursor: auto; }
+    .cursor { display: none; }
+}
+
+/* ============================================================
+   对比度实测（WCAG 2.1 sRGB）
+   暗色：粉 5.62 / 蓝 5.75 / 绿 6.67 / 主文字 17.49 / 次要 7.57
+   亮色：粉 4.84 / 蓝 7.17 / 绿 4.93 / 主文字 16.48 / 次要 5.52
+   ============================================================ */

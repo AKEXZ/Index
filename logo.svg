@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="19 17 330 143" width="330" height="143">
+    <g transform="translate(20, 10) skewX(-12) rotate(-3)">
+        
+        <!-- ================= 第一层：底部的白色外发光层 ================= -->
+        <!-- 使用白色，且 stroke-width 比黑边大 6px（黑边8px，这里用14px），形成白边 -->
+        <!-- 同时所有白色的横线、点等都要包含在内 -->
+        <g stroke="#ffffff" stroke-width="14" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M40 130 L65 40 L85 40 L110 130 L88 130 L82 105 L68 105 L62 130 Z" fill="none"/>
+            <rect x="32" y="80" width="10" height="14" rx="2" fill="#ffffff"/>
+            <rect x="108" y="80" width="10" height="14" rx="2" fill="#ffffff"/>
+            
+            <path d="M128 85 C133 70,148 70,153 85 C158 100,173 100,178 85" fill="none"/>
+            <path d="M138 75 L128 85 L138 95" fill="none"/>
+            <path d="M168 75 L178 85 L168 95" fill="none"/>
+
+            <path d="M188 40 L208 40 L208 75 L228 40 L253 40 L223 85 L255 130 L231 130 L208 95 L208 130 L188 130 Z" fill="none"/>
+            <rect x="180" y="25" width="10" height="14" rx="2" fill="#ffffff"/>
+            <rect x="180" y="130" width="10" height="14" rx="2" fill="#ffffff"/>
+
+            <path d="M270 40 L325 40 L325 60 L290 60 L290 75 L320 75 L320 95 L290 95 L290 110 L325 110 L325 130 L270 130 Z" fill="none"/>
+            <rect x="260" y="45" width="14" height="10" rx="2" fill="#ffffff"/>
+            <rect x="260" y="112" width="14" height="10" rx="2" fill="#ffffff"/>
+            
+            <!-- 底部虚线也要加粗白边 -->
+            <path d="M30 145 L335 145" fill="none"/>
+        </g>
+
+        <!-- ================= 第二层：顶部的真实彩色图形和黑边 ================= -->
+        <!-- 这层就是正常颜色，覆盖在白色层上面 -->
+        <g stroke="#222222" stroke-width="8" stroke-linejoin="round" stroke-linecap="round">
+            <!-- A 粉色 -->
+            <path d="M40 130 L65 40 L85 40 L110 130 L88 130 L82 105 L68 105 L62 130 Z" fill="#ff3366"/>
+            <rect x="32" y="80" width="10" height="14" rx="2" fill="#ff3366"/>
+            <rect x="108" y="80" width="10" height="14" rx="2" fill="#ff3366"/>
+
+            <!-- 连接循环箭头 -->
+            <path d="M128 85 C133 70,148 70,153 85 C158 100,173 100,178 85" fill="none"/>
+            <path d="M138 75 L128 85 L138 95" fill="none"/>
+            <path d="M168 75 L178 85 L168 95" fill="none"/>
+
+            <!-- K 蓝色 -->
+            <path d="M188 40 L208 40 L208 75 L228 40 L253 40 L223 85 L255 130 L231 130 L208 95 L208 130 L188 130 Z" fill="#0052FF"/>
+            <rect x="180" y="25" width="10" height="14" rx="2" fill="#0052FF"/>
+            <rect x="180" y="130" width="10" height="14" rx="2" fill="#0052FF"/>
+
+            <!-- Ǝ 橙色 -->
+            <path d="M270 40 L325 40 L325 60 L290 60 L290 75 L320 75 L320 95 L290 95 L290 110 L325 110 L325 130 L270 130 Z" fill="#23ac38"/>
+            <rect x="260" y="45" width="14" height="10" rx="2" fill="#23ac38"/>
+            <rect x="260" y="112" width="14" height="10" rx="2" fill="#23ac38"/>
+
+            <!-- 底部虚线 -->
+            <path d="M30 145 L335 145" stroke-width="5" stroke-dasharray="10 10" fill="none"/>
+        </g>
+    </g>
+</svg>

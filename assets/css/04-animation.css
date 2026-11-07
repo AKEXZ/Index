@@ -1,0 +1,17 @@
+/* ============================================================
+   04-animation.css — 入场动画与关键帧
+   ============================================================ */
+
+/* ---------- 入场动画 ---------- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            animation: rise 0.5s var(--ease) var(--d, 0.2s) forwards;
+        }
+
+        @keyframes rise {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }

@@ -1,0 +1,320 @@
+/* ============================================================
+   05-responsive.css — 桌面端布局、白天模式材质细节、响应式与无障碍降级
+   ============================================================ */
+
+/* ---------- 桌面端：一屏展示六个站点 ---------- */
+        @media (min-width: 1024px) {
+            body { height: 100svh; }
+            .topbar { padding: 14px var(--pad); }
+            .brand__logo { width: 56px; height: 24px; }
+            .marquee__track span { padding: 6px 0; }
+
+            main {
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+                min-height: 0;
+            }
+
+            .layout {
+                display: grid;
+                grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+                gap: clamp(24px, 2.6vw, 56px);
+                flex: 1;
+                min-height: 0;
+                padding: clamp(20px, 3.4vh, 44px) var(--pad) clamp(18px, 3vh, 34px);
+            }
+
+            .hero {
+                min-height: 0;
+                padding: 0;
+                gap: clamp(14px, 2.2vh, 26px);
+            }
+
+            .hero__lead {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .hero__title { margin-bottom: clamp(14px, 2vh, 24px); }
+            .eyebrow { margin-bottom: clamp(10px, 1.4vh, 16px); font-size: 10.5px; }
+            .hero__logo { margin: clamp(10px, 1.6vh, 18px) 0 clamp(18px, 2.6vh, 32px); }
+            .hero__cn span { font-size: clamp(118px, 15.2vw, 270px); }
+            .hero__lede { font-size: clamp(15px, 1.3vw, 19px); }
+            .hero__lede em { font-size: 1.72em; }
+            .hero__hint { margin-top: clamp(18px, 2.4vh, 26px); font-size: 10.5px; }
+            .key { width: 28px; height: 28px; font-size: 11px; }
+            .hero__side { width: 100%; gap: clamp(24px, 2.4vw, 40px); justify-content: space-between; padding-top: 16px; }
+            .stat b { font-size: clamp(22px, 2.2vw, 32px); }
+            .stat span { font-size: 9px; margin-top: 6px; }
+            .scroll-cue { display: none; }
+
+            .sites {
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                min-height: 0;
+            }
+
+            .sites__head {
+                padding-top: 0;
+                border-top: 0;
+                margin-bottom: clamp(10px, 1.6vh, 18px);
+                flex: none;
+            }
+
+            .sites__title { font-size: clamp(24px, 2.2vw, 34px); }
+            .sites__title span { margin-top: 6px; }
+            .sites__note { max-width: 200px; font-size: 9px; line-height: 1.65; }
+
+            .sites__grid {
+                flex: 1;
+                min-height: 0;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-rows: 1fr;
+                gap: clamp(10px, 1.4vh, 18px);
+            }
+
+            .sites__acc {
+                flex: 1;
+                min-height: 0;
+                display: flex;
+                gap: clamp(10px, 1.4vh, 18px);
+                margin-top: clamp(10px, 1.4vh, 18px);
+            }
+
+            /* 手风琴：悬停放大 */
+            .card--acc {
+                flex: 1 1 0;
+                min-width: 0;
+            }
+
+            .card--acc:hover, .card--acc:focus-visible, .card--acc:focus-within, .card--acc.is-open {
+                flex-grow: 3;
+            }
+
+            /* 有其它卡片被指向时，收起默认展开的 03 */
+            .sites__acc:has(.card--acc:hover) .card--acc.is-open:not(:hover),
+            .sites__acc:has(.card--acc:focus-visible) .card--acc.is-open:not(:focus-visible),
+            .sites__acc:has(.card--acc:focus-within) .card--acc.is-open:not(:focus-within) {
+                flex-grow: 1;
+            }
+
+            .card--acc .card__type { display: none; }
+
+            .card--acc .card__body, .card--acc .card__foot {
+                opacity: 0;
+                transition: opacity 0.32s var(--ease);
+            }
+
+            .card--acc:hover .card__type,
+            .card--acc:focus-visible .card__type,
+            .card--acc:focus-within .card__type,
+            .card--acc.is-open .card__type {
+                display: block;
+            }
+
+            .card--acc:hover .card__body,
+            .card--acc:focus-visible .card__body,
+            .card--acc:focus-within .card__body,
+            .card--acc:hover .card__foot,
+            .card--acc:focus-visible .card__foot,
+            .card--acc:focus-within .card__foot,
+            .card--acc.is-open .card__body,
+            .card--acc.is-open .card__foot {
+                opacity: 1;
+                transition-delay: 0.1s;
+            }
+
+            .sites__acc:has(.card--acc:hover) .card--acc.is-open:not(:hover) .card__type,
+            .sites__acc:has(.card--acc:focus-visible) .card--acc.is-open:not(:focus-visible) .card__type,
+            .sites__acc:has(.card--acc:focus-within) .card--acc.is-open:not(:focus-within) .card__type {
+                display: none;
+            }
+
+            .sites__acc:has(.card--acc:hover) .card--acc.is-open:not(:hover) .card__body,
+            .sites__acc:has(.card--acc:hover) .card--acc.is-open:not(:hover) .card__foot,
+            .sites__acc:has(.card--acc:focus-visible) .card--acc.is-open:not(:focus-visible) .card__body,
+            .sites__acc:has(.card--acc:focus-visible) .card--acc.is-open:not(:focus-visible) .card__foot,
+            .sites__acc:has(.card--acc:focus-within) .card--acc.is-open:not(:focus-within) .card__body,
+            .sites__acc:has(.card--acc:focus-within) .card--acc.is-open:not(:focus-within) .card__foot {
+                opacity: 0;
+                transition-delay: 0s;
+            }
+
+            .card--acc .card__slim {
+                display: block;
+                position: absolute;
+                left: 50%;
+                top: auto;
+                bottom: clamp(12px, 1.8vh, 18px);
+                transform: translateX(-50%);
+                writing-mode: vertical-rl;
+                text-orientation: upright;
+                white-space: nowrap;
+                font-family: var(--font-cn);
+                font-size: clamp(17px, 2vh, 24px);
+                letter-spacing: 0.16em;
+                color: var(--paper);
+                opacity: 1;
+                pointer-events: none;
+                transition: opacity 0.28s var(--ease);
+            }
+
+            .card--acc:hover .card__slim,
+            .card--acc:focus-visible .card__slim,
+            .card--acc:focus-within .card__slim,
+            .card--acc.is-open .card__slim {
+                opacity: 0;
+            }
+
+            .sites__acc:has(.card--acc:hover) .card--acc.is-open:not(:hover) .card__slim,
+            .sites__acc:has(.card--acc:focus-visible) .card--acc.is-open:not(:focus-visible) .card__slim,
+            .sites__acc:has(.card--acc:focus-within) .card--acc.is-open:not(:focus-within) .card__slim {
+                opacity: 1;
+            }
+
+            /* 底纹图标：收起时居中，展开时移到右上角 */
+            .card--acc .card__wm {
+                width: var(--wm-collapsed);
+                top: 38%;
+                right: 50%;
+                transform: translate(50%, -50%);
+                opacity: 0.22;
+                transition: width 0.35s steps(7), top 0.35s steps(7), right 0.35s steps(7), transform 0.35s steps(7), opacity 0.2s steps(2);
+            }
+
+            .card--acc:hover .card__wm,
+            .card--acc:focus-visible .card__wm,
+            .card--acc:focus-within .card__wm,
+            .card--acc.is-open .card__wm {
+                width: var(--wm-size);
+                top: var(--wm-top);
+                right: var(--wm-right);
+                transform: translate(0, 0);
+                opacity: var(--wm-op);
+            }
+
+            .sites__acc:has(.card--acc:hover) .card--acc.is-open:not(:hover) .card__wm,
+            .sites__acc:has(.card--acc:focus-visible) .card--acc.is-open:not(:focus-visible) .card__wm,
+            .sites__acc:has(.card--acc:focus-within) .card--acc.is-open:not(:focus-within) .card__wm {
+                width: var(--wm-collapsed);
+                top: 38%;
+                right: 50%;
+                transform: translate(50%, -50%);
+                opacity: 0.22;
+            }
+
+            .card {
+                min-height: 0;
+                padding: clamp(12px, 2.1vh, 26px);
+                gap: clamp(10px, 1.8vh, 24px);
+            }
+
+            .card__idx { font-size: clamp(26px, 3.6vh, 42px); }
+            .card__type { font-size: 9.5px; }
+            .card__en { font-size: 9px; }
+            .card__cta { font-size: 13px; }
+            .card__body { gap: 6px; }
+            .card__title { font-size: clamp(28px, 4vh, 48px); }
+            .card__title-sub { font-size: clamp(24px, 3.4vh, 42px); }
+            .card__desc { margin-top: 2px; max-width: none; font-size: clamp(12px, 1.55vh, 15px); line-height: 1.6; }
+            .card__foot { padding-top: clamp(8px, 1.3vh, 14px); }
+            .card__arrow { width: 32px; height: 32px; }
+            .card__arrow svg { width: 13px; height: 13px; }
+
+            .footer { padding: 12px var(--pad); }
+            .footer__big { display: none; }
+        }
+
+        @media (min-width: 1024px) and (min-height: 800px) {
+            .footer { padding-bottom: 18px; }
+        }
+
+        /* 低高度桌面：进一步压缩，保证一屏无滚动 */
+        @media (min-width: 1024px) and (max-height: 700px) {
+            .layout { padding-top: 14px; padding-bottom: 12px; }
+            .footer { padding: 8px var(--pad); }
+            .hero__lead { justify-content: flex-start; }
+            .eyebrow { display: none; }
+            .hero__logo { width: 72%; margin: 2px 0 14px; }
+            .hero__cn span { font-size: clamp(112px, 14vw, 160px); }
+            .hero__lede em { font-size: 1.55em; }
+            .hero__hint { margin-top: 12px; }
+            .card__idx { font-size: 20px; }
+            .card__type { font-size: 8px; }
+            .card__en { font-size: 7.5px; }
+            .card__cta { font-size: 11px; }
+            .card__title { font-size: 24px; }
+            .card__title-sub { font-size: 22px; }
+            .card__desc { font-size: 11px; line-height: 1.5; }
+            .card__wm { --wm-size: 120px; --wm-top: -20px; --wm-right: -14px; --wm-collapsed: 56px; }
+            .card--acc .card__slim { font-size: 14px; bottom: 8px; }
+            .card { padding: 10px 12px; gap: 8px; }
+            .card__body { gap: 4px; }
+            .card__foot { padding-top: 8px; }
+        }
+
+/* ---------- 白天模式的材质细节 ---------- */
+        html[data-theme="light"] .dither { opacity: 0.6; }
+        html[data-theme="light"] .card__wm { --wm-op: 0.26; }
+        html[data-theme="light"] .toast { box-shadow: 4px 4px 0 rgba(16, 20, 35, 0.35); }
+
+/* ---------- 响应式 ---------- */
+        @media (max-width: 1023px) {
+            .dither { width: clamp(260px, 52vw, 420px); height: clamp(260px, 52vw, 420px); }
+            .dither--pink { top: 48px; right: -12vw; }
+            .dither--blue { bottom: 12px; left: -12vw; }
+            .topbar__meta span:first-child { display: none; }
+        }
+
+        @media (max-width: 900px) {
+            .topbar__meta span:nth-child(2) { display: none; }
+        }
+
+        @media (min-width: 641px) and (max-width: 1023px) {
+            .hero__logo { width: 44%; max-width: 400px; margin: 8px 0 18px; }
+            .hero__cn span { font-size: clamp(120px, 20vw, 210px); }
+        }
+
+        @media (max-width: 980px) {
+            .hero { min-height: auto; }
+            .sites__grid, .sites__acc { grid-template-columns: 1fr; }
+            .sites__note { display: none; }
+        }
+
+        @media (max-width: 640px) {
+            .topbar { padding: 16px 20px; gap: 14px; }
+            .topbar__meta span:first-child, .topbar__meta span:nth-child(2) { display: none; }
+            .tz { display: none; }
+            .theme-toggle { padding: 0 8px; }
+            .theme-toggle span { display: none !important; }
+            .brand__text { font-size: 18px; }
+            .hero__side { gap: 30px; width: 100%; }
+            .stat b .uptime { font-size: 20px; }
+            .hero__hint { flex-wrap: wrap; }
+            .hero__cn span { font-size: clamp(104px, 33vw, 150px); }
+            .hero__logo { width: 66%; max-width: 280px; margin: 8px 0 16px; }
+            .card__wm { --wm-size: 160px; --wm-top: -24px; --wm-right: -20px; }
+            .toast { top: 112px; width: max-content; max-width: calc(100% - 40px); text-align: center; }
+            .footer__row { flex-direction: column; align-items: flex-start; }
+            .card { min-height: auto; }
+        }
+
+        @media (max-width: 380px) {
+            .brand__text, .brand__divider { display: none; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+            }
+            .hero__cn span, .card, .reveal { opacity: 1; transform: none; }
+            .marquee__track { animation: none; }
+            body { cursor: auto; }
+            .cursor { display: none; }
+        }
