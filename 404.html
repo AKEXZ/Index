@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>404 · 页面未找到 — AKE小栈</title>
+    <meta name="description" content="AKE小栈 — 你访问的页面不存在或已被移动" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBzaGFwZS1yZW5kZXJpbmc9ImNyaXNwRWRnZXMiPg0KICA8ZyBmaWxsPSIjZmYzMzY2Ij4NCiAgICA8cmVjdCB4PSIyNCIgeT0iNCIgIHdpZHRoPSI4IiBoZWlnaHQ9IjgiLz4NCiAgICA8cmVjdCB4PSIzMiIgeT0iNCIgIHdpZHRoPSI4IiBoZWlnaHQ9IjgiLz4NCiAgICA8cmVjdCB4PSIxNiIgeT0iMTIiIHdpZHRoPSI4IiBoZWlnaHQ9IjgiLz4NCiAgICA8cmVjdCB4PSIyNCIgeT0iMTIiIHdpZHRoPSI4IiBoZWlnaHQ9IjgiLz4NCiAgICA8cmVjdCB4PSIzMiIgeT0iMTIiIHdpZHRoPSI4IiBoZWlnaHQ9IjgiLz4NCiAgICA8cmVjdCB4PSI0MCIgeT0iMTIiIHdpZHRoPSI4IiBoZWlnaHQ9IjgiLz4NCiAgICA8cmVjdCB4PSI4IiAgeT0iMjAiIHdpZHRoPSI4IiBoZWlnaHQ9IjgiLz4NCiAgICA8cmVjdCB4PSIxNiIgeT0iMjAiIHdpZHRoPSI4IiBoZWlnaHQ9IjgiLz4NCiAgICA8cmVjdCB4PSI0MCIgeT0iMjAiIHdpZHRoPSI4IiBoZWlnaHQ9IjgiLz4NCiAgICA8cmVjdCB4PSI0OCIgeT0iMjAiIHdpZHRoPSI4IiBoZWlnaHQ9IjgiLz4NCiAgICA8cmVjdCB4PSI4IiAgeT0iMjgiIHdpZHRoPSI4IiBoZWlnaHQ9IjgiLz4NCiAgICA8cmVjdCB4PSIxNiIgeT0iMjgiIHdpZHRoPSI4IiBoZWlnaHQ9IjgiLz4NCiAgICA8cmVjdCB4PSI0MCIgeT0iMjgiIHdpZHRoPSI4IiBoZWlnaHQ9IjgiLz4NCiAgICA8cmVjdCB4PSI0OCIgeT0iMjgiIHdpZHRoPSI4IiBoZWlnaHQ9IjgiLz4NCiAgICA8cmVjdCB4PSI4IiAgeT0iMzYiIHdpZHRoPSI0OCIgaGVpZ2h0PSI4Ii8+DQogICAgPHJlY3QgeD0iOCIgIHk9IjQ0IiB3aWR0aD0iOCIgaGVpZ2h0PSI4Ii8+DQogICAgPHJlY3QgeD0iMTYiIHk9IjQ0IiB3aWR0aD0iOCIgaGVpZ2h0PSI4Ii8+DQogICAgPHJlY3QgeD0iNDAiIHk9IjQ0IiB3aWR0aD0iOCIgaGVpZ2h0PSI4Ii8+DQogICAgPHJlY3QgeD0iNDgiIHk9IjQ0IiB3aWR0aD0iOCIgaGVpZ2h0PSI4Ii8+DQogICAgPHJlY3QgeD0iOCIgIHk9IjUyIiB3aWR0aD0iOCIgaGVpZ2h0PSI4Ii8+DQogICAgPHJlY3QgeD0iMTYiIHk9IjUyIiB3aWR0aD0iOCIgaGVpZ2h0PSI4Ii8+DQogICAgPHJlY3QgeD0iNDAiIHk9IjUyIiB3aWR0aD0iOCIgaGVpZ2h0PSI4Ii8+DQogICAgPHJlY3QgeD0iNDgiIHk9IjUyIiB3aWR0aD0iOCIgaGVpZ2h0PSI4Ii8+DQogIDwvZz4NCjwvc3ZnPg==" />
+
+    <style>
+        :root {
+            --bg: #0a0b0d;
+            --ink: #ece9e2;
+            --dim: #8a8f98;
+            --line: rgba(236, 233, 226, 0.14);
+            --pink: #ff3366;
+            --blue: #4d84ff;
+            --green: #23ac38;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scrollbar-width: thin;
+            scrollbar-color: #2a2e35 transparent;
+        }
+
+        body {
+            min-height: 100svh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+            line-height: 1.6;
+            text-align: center;
+            padding: 40px 24px;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(to right, rgba(236, 233, 226, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(236, 233, 226, 0.05) 1px, transparent 1px);
+            background-size: 64px 64px;
+            -webkit-mask-image: radial-gradient(80% 70% at 50% 50%, #000 30%, transparent 100%);
+            mask-image: radial-gradient(80% 70% at 50% 50%, #000 30%, transparent 100%);
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(42% 36% at 22% 18%, rgba(255, 51, 102, 0.08), transparent 70%),
+                radial-gradient(42% 36% at 80% 82%, rgba(77, 132, 255, 0.08), transparent 70%);
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .mark {
+            display: block;
+            width: clamp(140px, 32vw, 220px);
+            height: auto;
+        }
+
+        .code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: clamp(72px, 20vw, 160px);
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: 0.02em;
+            text-shadow: 4px 4px 0 rgba(255, 51, 102, 0.28);
+        }
+
+        h1 {
+            font-size: clamp(22px, 5vw, 32px);
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            line-height: 1.2;
+        }
+
+        .tagline {
+            color: var(--dim);
+            font-size: clamp(14px, 3.4vw, 16px);
+            letter-spacing: 0.12em;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            padding: 12px 30px;
+            text-decoration: none;
+            color: #0a0b0d;
+            background: var(--pink);
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 51, 102, 0.35);
+        }
+
+        footer {
+            position: relative;
+            z-index: 1;
+            margin-top: 48px;
+            color: var(--dim);
+            font-size: 13px;
+            letter-spacing: 0.08em;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .btn { transition: none; }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <svg class="mark" xmlns="http://www.w3.org/2000/svg" viewBox="19 17 330 143" role="img" aria-label="AKE小栈">
+            <g transform="translate(20, 10) skewX(-12) rotate(-3)">
+                <g stroke="#ffffff" stroke-width="14" stroke-linejoin="round" stroke-linecap="round">
+                    <path d="M40 130 L65 40 L85 40 L110 130 L88 130 L82 105 L68 105 L62 130 Z" fill="none"/>
+                    <rect x="32" y="80" width="10" height="14" rx="2" fill="#ffffff"/>
+                    <rect x="108" y="80" width="10" height="14" rx="2" fill="#ffffff"/>
+                    <path d="M128 85 C133 70,148 70,153 85 C158 100,173 100,178 85" fill="none"/>
+                    <path d="M138 75 L128 85 L138 95" fill="none"/>
+                    <path d="M168 75 L178 85 L168 95" fill="none"/>
+                    <path d="M188 40 L208 40 L208 75 L228 40 L253 40 L223 85 L255 130 L231 130 L208 95 L208 130 L188 130 Z" fill="none"/>
+                    <rect x="180" y="25" width="10" height="14" rx="2" fill="#ffffff"/>
+                    <rect x="180" y="130" width="10" height="14" rx="2" fill="#ffffff"/>
+                    <path d="M270 40 L325 40 L325 60 L290 60 L290 75 L320 75 L320 95 L290 95 L290 110 L325 110 L325 130 L270 130 Z" fill="none"/>
+                    <rect x="260" y="45" width="14" height="10" rx="2" fill="#ffffff"/>
+                    <rect x="260" y="112" width="14" height="10" rx="2" fill="#ffffff"/>
+                    <path d="M30 145 L335 145" fill="none"/>
+                </g>
+                <g stroke="#222222" stroke-width="8" stroke-linejoin="round" stroke-linecap="round">
+                    <path d="M40 130 L65 40 L85 40 L110 130 L88 130 L82 105 L68 105 L62 130 Z" fill="#ff3366"/>
+                    <rect x="32" y="80" width="10" height="14" rx="2" fill="#ff3366"/>
+                    <rect x="108" y="80" width="10" height="14" rx="2" fill="#ff3366"/>
+                    <path d="M128 85 C133 70,148 70,153 85 C158 100,173 100,178 85" fill="none"/>
+                    <path d="M138 75 L128 85 L138 95" fill="none"/>
+                    <path d="M168 75 L178 85 L168 95" fill="none"/>
+                    <path d="M188 40 L208 40 L208 75 L228 40 L253 40 L223 85 L255 130 L231 130 L208 95 L208 130 L188 130 Z" fill="#0052FF"/>
+                    <rect x="180" y="25" width="10" height="14" rx="2" fill="#0052FF"/>
+                    <rect x="180" y="130" width="10" height="14" rx="2" fill="#0052FF"/>
+                    <path d="M270 40 L325 40 L325 60 L290 60 L290 75 L320 75 L320 95 L290 95 L290 110 L325 110 L325 130 L270 130 Z" fill="#23ac38"/>
+                    <rect x="260" y="45" width="14" height="10" rx="2" fill="#23ac38"/>
+                    <rect x="260" y="112" width="14" height="10" rx="2" fill="#23ac38"/>
+                    <path d="M30 145 L335 145" stroke-width="5" stroke-dasharray="10 10" fill="none"/>
+                </g>
+            </g>
+        </svg>
+
+        <div class="code">404</div>
+        <h1>页面未找到</h1>
+        <p class="tagline">你访问的页面不存在或已被移动</p>
+
+        <a class="btn" href="./">返回首页</a>
+    </main>
+
+    <footer>© <span id="year">2026</span> AKE小栈</footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
